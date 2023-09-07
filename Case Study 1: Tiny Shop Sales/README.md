@@ -107,9 +107,7 @@ order by orders desc;
    **9. For each order, determine if it was ‘Expensive’ (total over 300),** 
    **‘Affordable’ (total over 100), or ‘Cheap’.**
       
-      
      ````sql
-      
      with cte as (
      Select o.order_id order_id, sum(oi.quantity * p.price) as revenue  
      from orders o
