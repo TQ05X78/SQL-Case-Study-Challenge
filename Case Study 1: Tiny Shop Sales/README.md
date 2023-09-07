@@ -81,7 +81,7 @@ order by orders desc;
    limit 3;
    ````
    ***
-   **7. Which product has been bought the least in terms of quantity?**
+  **7. Which product has been bought the least in terms of quantity?**
     
     
     Select p.product_name as products,
@@ -91,9 +91,8 @@ order by orders desc;
     group by product_name
     order by quantity;
     
-    
-   ***
-   **8. What is the median order total?**
+    ***
+**8. What is the median order total?**
     
     
     with cte as (
