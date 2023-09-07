@@ -53,17 +53,17 @@ order by orders desc;
 
  **5. Find the first order (by date) for each customer.**
 
-        ````sql
-        Select * from customers;
-	Select * from orders;
-	
-	Select c.customer_id, c.first_name, c.last_name,
-	min(o.order_date) as order_date
-	from customers c
-	left join orders o on c.customer_id = o.customer_id
-	group by c.customer_id, c.first_name, c.last_name
-	order by c.customer_id;
-	````
+  ````sql
+  Select * from customers;
+  Select * from orders;
+
+  Select c.customer_id, c.first_name, c.last_name,
+  min(o.order_date) as order_date
+  from customers c
+  left join orders o on c.customer_id = o.customer_id
+  group by c.customer_id, c.first_name, c.last_name
+  order by c.customer_id;
+  ````
 
  **6. Find the top 3 customers who have ordered the most distinct products.**
 
