@@ -130,7 +130,7 @@ order by orders desc;
   order by c.customer_id;
   ````
   #### Answer:
-| first_name  | last_name | orders | 
+| first_name  | last_name | order_date | 
 | ----------- | -------- | ------| 
 | John        | Doe      |  2023-05-01    |
 | Jane        | Smith    |  2023-05-02    |
@@ -164,6 +164,12 @@ order by orders desc;
    order by most_distinct_products desc
    limit 3;
    ````
+#### Answer:
+| first_name  | last_name | most_distinct_products | 
+| ----------- | -------- | -----------------| 
+| Bob         | Johnson  |  3    |
+| John        | Doe      |  3    |
+| Jane        | Smith    |  3    |
    ***
   **7. Which product has been bought the least in terms of quantity?**
     
@@ -175,6 +181,26 @@ order by orders desc;
     group by product_name
     order by quantity;
     ````
+#### Answer:
+| product_name | quantity | 
+| ------------- | ------ |
+| Product L     | 3 |
+| Product I     | 3 |
+| Product H     | 3 |
+| Product E     | 3 |
+| Product D     | 3 |
+| Product G     | 3 |
+| Product K     | 3 |
+| Product A     | 5 |
+| Product M     | 6 |
+| Product F     | 6 |
+| Product J     | 6 |
+| Product C     | 8 |
+| Product B     | 9 |
+
+
+
+    
   ***
   **8. What is the median order total?**
     
@@ -189,6 +215,15 @@ order by orders desc;
     group by oi.order_id)
     Select percentile_disc(0.5) within group (order by revenue) as median_order from cte;
     ````
+#### Answer:
+| median_order |
+|--------------|
+|  85.00       |
+
+
+
+
+    
    *** 
     
    **9. For each order, determine if it was ‘Expensive’ (total over 300),‘Affordable’ (total over 100), or ‘Cheap’.**
@@ -208,6 +243,29 @@ order by orders desc;
      else 'Cheap' end as Affordability
      from cte;	 
      ```` 
+
+#### Answer:
+| order_id  | revenue | affordability | 
+| --------- | -------- | -----------------| 
+| 1         | 35.00  |  Cheap    |
+| 2         | 75.00  |  Cheap    |
+| 3         | 50.00  |  Cheap    |
+| 4         | 80.00  |  Cheap    |
+| 5         | 50.00  |  Cheap    |
+| 6         | 55.00  |  Cheap    |
+| 7         | 85.00  |  Cheap    |
+| 8         | 145.00 |  Affordable    |
+| 9         | 140.00 |  Affordable    |
+| 10        | 285.00 |  Affordable    |
+| 11        | 275.00 |  Affordable    |
+| 12        | 80.00  |  Cheap    |
+| 13        | 185.00 |  Affordable    |
+| 14        | 145.00 |  Affordable    |
+| 15        | 225.00 |  Affordable    |
+| 16        | 340.00 |  Expensive    |
+
+
+     
      ***
      
     
@@ -225,5 +283,11 @@ order by orders desc;
       join products p on p.product_id = oi.product_id
       where p.price in (Select max(price) from products);
       ````
+#### Answer:
+| first_name | last_name | price |
+|------------|-----------|-------|
+| Ivy        |  Jones    | 70.00 |
+| Sophia     |  Thomas   | 70.00 |
+      
    *** 
    
