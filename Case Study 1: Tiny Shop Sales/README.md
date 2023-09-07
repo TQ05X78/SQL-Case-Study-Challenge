@@ -125,7 +125,7 @@ order by orders desc;
      else 'Cheap' end as Affordability
      from cte;	 
      ```` 
-     
+     ***
    **10. Find customers who have ordered the product with the highest price.**
       
       
@@ -139,4 +139,5 @@ order by orders desc;
       join products p on p.product_id = oi.product_id
       where p.price in (Select max(price) from products);
       ````
-
+   *** 
+   
