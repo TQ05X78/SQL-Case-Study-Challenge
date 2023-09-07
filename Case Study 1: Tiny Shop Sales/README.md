@@ -79,6 +79,7 @@ order by orders desc;
    order by most_distinct_products desc
    limit 3;
    ````
+   
    **7. Which product has been bought the least in terms of quantity?**
 
     ````sql
@@ -88,20 +89,23 @@ order by orders desc;
     group by product_name
     order by quantity;
     ````
+   
    **8. What is the median order total?**
 
     ````sql
-     with cte as (
-     Select oi.order_id, sum(oi.quantity*p.price) as revenue,
-     row_number() over (order by sum(quantity*price)) as row_number,
-     count(*) over() as total_orders
-     from order_items oi
-     join products p on p.product_id = oi.product_id
-     group by oi.order_id)
+    with cte as (
+    Select oi.order_id, sum(oi.quantity*p.price) as revenue,
+    row_number() over (order by sum(quantity*price)) as row_number,
+    count(*) over() as total_orders
+    from order_items oi
+    join products p on p.product_id = oi.product_id
+    group by oi.order_id)
  
      Select percentile_disc(0.5) within group (order by revenue) as median_order from cte;
      ````
-**9. For each order, determine if it was ‘Expensive’ (total over 300), ‘Affordable’ (total over 100), or ‘Cheap’.**
+    
+    
+   **9. For each order, determine if it was ‘Expensive’ (total over 300), ‘Affordable’ (total over 100), or ‘Cheap’.**
       
       ````sql
       with cte as (
