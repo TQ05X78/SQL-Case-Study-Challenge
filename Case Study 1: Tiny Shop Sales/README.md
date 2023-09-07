@@ -60,6 +60,26 @@ order by orders desc;
   group by product_name
   order by total_revenue desc;
   ````
+#### Answer:
+| product_name | total_revenue | 
+| ------------- | ------ |
+| Product M     | 420.00 |
+| Product J     | 330.00 |
+| Product F     | 210.00 |
+| Product L     | 195.00 |
+| Product K     | 180.00 |
+| Product C     | 160.00 |
+| Product I     | 150.00 |
+| Product B     | 135.00 |
+| Product H     | 135.00 |
+| Product G     | 120.00 |
+| Product E     | 90.00  |
+| Product D     | 75.00  |
+| Product A     | 50.00  |
+
+
+
+
  ***
  **4. Find the day with the highest revenue.**
 
