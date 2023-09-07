@@ -129,6 +129,26 @@ order by orders desc;
   group by c.customer_id, c.first_name, c.last_name
   order by c.customer_id;
   ````
+  #### Answer:
+| first_name  | last_name | orders | 
+| ----------- | -------- | ------| 
+| John        | Doe      |  2023-05-01    |
+| Jane        | Smith    |  2023-05-02    |
+| Bob         | Johnson  |  2023-05-03    |
+| Alice       | Brown    |  2023-05-07    |
+| Charlie     | Davis    |  2023-05-08    | 
+| Eva         | Fisher   |  2023-05-09    | 
+| George      | Harris   |  2023-05-10    | 
+| Ivy         | Jones    |  2023-05-11    |  
+| Kevin       | Miller   |  2023-05-12    | 
+| Lily        | Nelson   |  2023-05-13    | 
+| Oliver      | Patterson|  2023-05-14    | 
+| Quinn       | Roberts  |  2023-05-15    | 
+| Sophia      | Thomas   |  2023-05-16    | 
+
+
+
+
   ***
   **6. Find the top 3 customers who have ordered the most distinct products.**
 
