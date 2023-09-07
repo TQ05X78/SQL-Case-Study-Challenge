@@ -1,1 +1,0 @@
-# SQL-Case-Study-Challenge
