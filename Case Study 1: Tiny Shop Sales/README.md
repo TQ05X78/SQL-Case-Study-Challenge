@@ -100,10 +100,9 @@ order by orders desc;
     from order_items oi
     join products p on p.product_id = oi.product_id
     group by oi.order_id)
- 
-     Select percentile_disc(0.5) within group (order by revenue) as median_order from cte;
-     ````
     
+    Select percentile_disc(0.5) within group (order by revenue) as median_order from cte;
+    ````
     
    **9. For each order, determine if it was ‘Expensive’ (total over 300), ‘Affordable’ (total over 100), or ‘Cheap’.**
       
@@ -123,8 +122,7 @@ order by orders desc;
       else 'Cheap' end as Affordability
       from cte;	 
       ```` 
-	
-  **10. Find customers who have ordered the product with the highest price.**
+   **10. Find customers who have ordered the product with the highest price.**
       
       ````sql
       Select c.first_name as first_name,
