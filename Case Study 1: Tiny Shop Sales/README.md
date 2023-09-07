@@ -2,7 +2,7 @@
 
 ## Questions---
 
-**1. Which product has the highest price? Only return a single row.
+**1. Which product has the highest price? Only return a single row.**
 
    ````sql  
 	 Select *
@@ -10,7 +10,7 @@
      where price = (Select max(price)from products);
    ````
 
-**2. Which customer has made the most orders?
+**2. Which customer has made the most orders?**
 
 ````sql
 Select * from customers;
@@ -23,12 +23,11 @@ group by c.first_name, c.last_name
 order by orders desc;
 ````
  
-**3. What’s the total revenue per product?
+**3. What’s the total revenue per product?**
 
-````sql
-Select * from products;
-Select * from order_items;
-
+  ````sql
+  Select * from products;
+  Select * from order_items;
 
   Select p.product_name as product_name, 
   sum(p.price * oi.quantity) as total_revenue 
@@ -38,11 +37,9 @@ Select * from order_items;
   order by total_revenue desc;
   ````
 
+ **4. Find the day with the highest revenue.**
 
-````sql
- **4. Find the day with the highest revenue.
-
-
+  ````sql
   Select  
   sum(p.price * oi.quantity) as total_revenue,
   to_char(o.order_date, 'Day') as Day
@@ -54,10 +51,10 @@ Select * from order_items;
   ````
 
 
-**5. Find the first order (by date) for each customer.
+ **5. Find the first order (by date) for each customer.**
 
-  ````sql
-  Select * from customers;
+        ````sql
+        Select * from customers;
 	Select * from orders;
 	
 	Select c.customer_id, c.first_name, c.last_name,
@@ -68,10 +65,9 @@ Select * from order_items;
 	order by c.customer_id;
 	````
 
- ````sql
- **6. Find the top 3 customers who have ordered the most distinct products.
+ **6. Find the top 3 customers who have ordered the most distinct products.**
 
-    
+        ````sql
 	Select c.first_name as first_name,
 	c.last_name as last_name,
 	count(distinct oi.product_id) most_distinct_products 
@@ -82,63 +78,62 @@ Select * from order_items;
 	group by first_name, last_name
 	order by most_distinct_products desc
 	limit 3;
-  ````
+        ````
 	
-	````sql
-  **7. Which product has been bought the least in terms of quantity?
+	
+ **7. Which product has been bought the least in terms of quantity?**
+
+       ````sql
+       Select p.product_name as products, sum(oi.quantity) as quantity
+       from order_items oi 
+       join products p on p.product_id = oi.product_id
+       group by product_name
+       order by quantity;
+       ````
+	
+ **8. What is the median order total?**
+
+       ````sql
+       with cte as (
+       Select oi.order_id, sum(oi.quantity*p.price) as revenue,
+       row_number() over (order by sum(quantity*price)) as row_number,
+       count(*) over() as total_orders
+       from order_items oi
+       join products p on p.product_id = oi.product_id
+       group by oi.order_id)
  
-  Select p.product_name as products, sum(oi.quantity) as quantity
-  from order_items oi 
-  join products p on p.product_id = oi.product_id
-  group by product_name
-  order by quantity;
-	````
+       Select percentile_disc(0.5) within group (order by revenue) as median_order from cte;
+       ````
+
+ **9. For each order, determine if it was ‘Expensive’ (total over 300), ‘Affordable’ (total over 100), or ‘Cheap’.**
+      
+      ````sql
+      with cte as (
+      Select o.order_id order_id, sum(oi.quantity * p.price) as revenue  
+      from orders o
+      join order_items oi on oi.order_id = o.order_id
+      join products p on p.product_id = oi.product_id
+      group by o.order_id
+      order by o.order_id)
+
+      Select order_id, revenue, 
+      case 
+      when revenue > 300 then 'Expensive'
+      when revenue > 100 then 'Affordable' 
+      else 'Cheap' end as Affordability
+      from cte;	 
+      ```` 
 	
- ````sql	
- **8. What is the median order total?
-
-   with cte as (
-   Select oi.order_id, sum(oi.quantity*p.price) as revenue,
-   row_number() over (order by sum(quantity*price)) as row_number,
-   count(*) over() as total_orders
-   from order_items oi
-   join products p on p.product_id = oi.product_id
-   group by oi.order_id)
- 
-
-  Select percentile_disc(0.5) within group (order by revenue) as median_order
-  from cte;
-  ````
-
-	
-	````sql
-  **9. For each order, determine if it was ‘Expensive’ (total over 300), ‘Affordable’ (total over 100), or ‘Cheap’.
-  with cte as (
-  Select o.order_id order_id, sum(oi.quantity * p.price) as revenue  
-  from orders o
-  join order_items oi on oi.order_id = o.order_id
-  join products p on p.product_id = oi.product_id
-  group by o.order_id
-  order by o.order_id)
-
-  Select order_id, revenue, 
-  case 
-  when revenue > 300 then 'Expensive'
-  when revenue > 100 then 'Affordable' 
-  else 'Cheap' end as Affordability
-  from cte;	 
-	```` 
-	
- ````sql
- **10. Find customers who have ordered the product with the highest price.
-
- Select c.first_name as first_name,
- c.last_name as last_name,
- p.price 
- from customers c
- join orders o on o.customer_id = c.customer_id
- join order_items oi on oi.order_id = o.order_id
- join products p on p.product_id = oi.product_id
- where p.price in (Select max(price) from products);
- ````
+  **10. Find customers who have ordered the product with the highest price.**
+      
+      ````sql
+      Select c.first_name as first_name,
+      c.last_name as last_name,
+      p.price 
+      from customers c
+      join orders o on o.customer_id = c.customer_id
+      join order_items oi on oi.order_id = o.order_id
+      join products p on p.product_id = oi.product_id
+      where p.price in (Select max(price) from products);
+      ````
 
