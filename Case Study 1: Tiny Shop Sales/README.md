@@ -30,21 +30,22 @@ group by c.first_name, c.last_name
 order by orders desc;
 ````
 #### Answer:
-| first_name | last_name | orders | 
-| ----------- | ---------- | -------------| 
-| Jane           | Smith | 2    | 
-| John           | Doe | 2     | 
-| Bob           | Johnson |2    | 
-| Quinn           | Roberts |1   | 
-| Oliver           | Patterson |1 | 
-| Eva           | Fisher | ramen |1 | 
-| Charlie           | Davis | curry | 1 | 
-| Sophia           | Thomas | curry | 1 | 
-| George           | Harris | sushi |1  | 
-| Lily           | Nelson | sushi | 1   | 
-| Ivy           | Jones | ramen | 1  | 
-| Kevin           | Miller | ramen | 1 | 
-| Alice           | Brown | ramen | 1  | 
+| first_name  | last_name | orders | 
+| ----------- | -------- | ------| 
+| Jane        | Smith    |  2    | 
+| John        | Doe      |  2    | 
+| Bob         | Johnson  |  2    | 
+| Quinn       | Roberts  |  1    | 
+| Oliver      | Patterson|  1    | 
+| Eva         | Fisher   |  1    | 
+| Charlie     | Davis    |  1    | 
+| Sophia      | Thomas   |  1    | 
+| George      | Harris   |  1    | 
+| Lily        | Nelson   |  1    | 
+| Ivy         | Jones    |  1    |  
+| Kevin       | Miller   |  1    | 
+| Alice       | Brown    |  1    | 
+
 *** 
 **3. What’s the total revenue per product?**
 
