@@ -82,13 +82,13 @@ order by orders desc;
    
    **7. Which product has been bought the least in terms of quantity?**
     
-    ````sql
+    ```sql
     Select p.product_name as products, sum(oi.quantity) as quantity
     from order_items oi 
     join products p on p.product_id = oi.product_id
     group by product_name
     order by quantity;
-    ````
+    ```
    
    **8. What is the median order total?**
     
