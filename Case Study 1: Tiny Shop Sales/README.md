@@ -1,6 +1,6 @@
 
 
-## Questions---
+## Questions and Solutions
 
 **1. Which product has the highest price? Only return a single row.**
 
