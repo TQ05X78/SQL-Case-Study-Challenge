@@ -94,22 +94,24 @@ order by orders desc;
   order by total_revenue desc;
   ````
 #### Answer:
-| product_name | total_revenue | 
-| ------------- | ------ |
-| Product M     | 420.00 |
-| Product J     | 330.00 |
-| Product F     | 210.00 |
-| Product L     | 195.00 |
-| Product K     | 180.00 |
-| Product C     | 160.00 |
-| Product I     | 150.00 |
-| Product B     | 135.00 |
-| Product H     | 135.00 |
-| Product G     | 120.00 |
-| Product E     | 90.00  |
-| Product D     | 75.00  |
-| Product A     | 50.00  |
-
+| total_revenue | day      | 
+| ------------- | ---------|
+| 340.00        | Tuesday  |
+| 285.00        | Wednesday|
+| 275.00        | Thursday |
+| 225.00        | Monday   |
+| 185.00        | Saturday |
+| 145.00        | Monday   |
+| 145.00        | Sunday   |
+| 140.00        | Tuesday  |
+| 85.00         | Sunday   |
+| 80.00         | Thursday |
+| 80.00         | Friday   |
+| 75.00         | Tuesday  |
+| 55.00         | Saturday |
+| 50.00         | Wednesday|
+| 50.00         | Friday   |
+| 35.00         | Monday   |
 
 
   ***
