@@ -1,5 +1,5 @@
 # Case Study 1: Tiny Shop Sales
-<img src = "https://github.com/TanuYadu/SQL-Case-Study-Challenge/issues/1#issue-1885866954" alt="Image" width = "500" height="520">
+("https://github.com/TanuYadu/SQL-Case-Study-Challenge/issues/1#issue-1885866954" alt="Image" width = "500" height="520")
 
 ## Questions and Solutions
 
