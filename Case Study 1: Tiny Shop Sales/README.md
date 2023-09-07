@@ -10,7 +10,7 @@
      from products
      where price = (Select max(price)from products);
    ````
-
+***
 **2. Which customer has made the most orders?**
 
 ````sql
@@ -23,7 +23,7 @@ join orders o on o.customer_id = c.customer_id
 group by c.first_name, c.last_name
 order by orders desc;
 ````
- 
+*** 
 **3. What’s the total revenue per product?**
 
   ````sql
@@ -37,7 +37,7 @@ order by orders desc;
   group by product_name
   order by total_revenue desc;
   ````
-
+ ***
  **4. Find the day with the highest revenue.**
 
   ````sql
@@ -50,7 +50,7 @@ order by orders desc;
   group by o.order_date
   order by total_revenue desc;
   ````
-
+  ***
 
  **5. Find the first order (by date) for each customer.**
 
@@ -65,7 +65,7 @@ order by orders desc;
   group by c.customer_id, c.first_name, c.last_name
   order by c.customer_id;
   ````
-
+  ***
   **6. Find the top 3 customers who have ordered the most distinct products.**
 
    ````sql
@@ -80,7 +80,7 @@ order by orders desc;
    order by most_distinct_products desc
    limit 3;
    ````
-   
+   ***
    **7. Which product has been bought the least in terms of quantity?**
     
     ````sql
@@ -91,7 +91,7 @@ order by orders desc;
     group by product_name
     order by quantity;
     ````
-   
+   ***
    **8. What is the median order total?**
     
     ````sql
@@ -105,7 +105,7 @@ order by orders desc;
     group by oi.order_id)
     Select percentile_disc(0.5) within group (order by revenue) as median_order from cte;
     ````
-     
+    *** 
     
    **9. For each order, determine if it was ‘Expensive’ (total over 300),** 
    **‘Affordable’ (total over 100), or ‘Cheap’.**
@@ -125,7 +125,7 @@ order by orders desc;
      else 'Cheap' end as Affordability
      from cte;	 
      ```` 
-   
+     
    **10. Find customers who have ordered the product with the highest price.**
       
       
