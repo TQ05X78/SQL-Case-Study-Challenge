@@ -92,7 +92,6 @@ order by orders desc;
    
    **8. What is the median order total?**
     
-    
     ````sql
     with cte as (
     Select oi.order_id, sum(oi.quantity*p.price) as revenue,
@@ -102,30 +101,31 @@ order by orders desc;
     join products p on p.product_id = oi.product_id
     group by oi.order_id)
     Select percentile_disc(0.5) within group (order by revenue) as median_order from cte;
-    
     ````
+     
     
-   **9. For each order, determine if it was ‘Expensive’ (total over 300), ‘Affordable’ (total over 100), or ‘Cheap’.**
+   **9. For each order, determine if it was ‘Expensive’ (total over 300),** 
+   **‘Affordable’ (total over 100), or ‘Cheap’.**
       
       
-      ````sql
+     ````sql
       
-      with cte as (
-      Select o.order_id order_id, sum(oi.quantity * p.price) as revenue  
-      from orders o
-      join order_items oi on oi.order_id = o.order_id
-      join products p on p.product_id = oi.product_id
-      group by o.order_id
-      order by o.order_id)
+     with cte as (
+     Select o.order_id order_id, sum(oi.quantity * p.price) as revenue  
+     from orders o
+     join order_items oi on oi.order_id = o.order_id
+     join products p on p.product_id = oi.product_id
+     group by o.order_id
+     order by o.order_id)
 
-      Select order_id, revenue, 
-      case 
-      when revenue > 300 then 'Expensive'
-      when revenue > 100 then 'Affordable' 
-      else 'Cheap' end as Affordability
-      from cte;	 
+     Select order_id, revenue, 
+     case 
+     when revenue > 300 then 'Expensive'
+     when revenue > 100 then 'Affordable' 
+     else 'Cheap' end as Affordability
+     from cte;	 
       
-      ```` 
+     ```` 
    
    **10. Find customers who have ordered the product with the highest price.**
       
