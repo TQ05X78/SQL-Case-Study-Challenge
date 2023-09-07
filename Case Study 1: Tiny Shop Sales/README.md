@@ -79,9 +79,7 @@ order by orders desc;
    order by most_distinct_products desc
    limit 3;
    ````
-	
-	
-   **7. Which product has been bought the least in terms of quantity?**
+  **7. Which product has been bought the least in terms of quantity?**
 
     ````sql
     Select p.product_name as products, sum(oi.quantity) as quantity
