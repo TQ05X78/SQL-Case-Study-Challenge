@@ -107,8 +107,7 @@ order by orders desc;
     ````
    *** 
     
-   **9. For each order, determine if it was ‘Expensive’ (total over 300),** 
-   **‘Affordable’ (total over 100), or ‘Cheap’.**
+   **9. For each order, determine if it was ‘Expensive’ (total over 300),‘Affordable’ (total over 100), or ‘Cheap’.**
       
      ````sql    
      with cte as (
@@ -126,7 +125,10 @@ order by orders desc;
      from cte;	 
      ```` 
     ***
- **10. Find customers who have ordered the product with the highest price.**
+     
+    
+    
+  **10. Find customers who have ordered the product with the highest price.**
       
       
       ````sql
@@ -139,5 +141,5 @@ order by orders desc;
       join products p on p.product_id = oi.product_id
       where p.price in (Select max(price) from products);
       ````
- *** 
+   *** 
    
