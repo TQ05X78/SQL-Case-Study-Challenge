@@ -115,21 +115,18 @@ order by orders desc;
      join products p on p.product_id = oi.product_id
      group by o.order_id
      order by o.order_id)
-
      Select order_id, revenue, 
      case 
      when revenue > 300 then 'Expensive'
      when revenue > 100 then 'Affordable' 
      else 'Cheap' end as Affordability
      from cte;	 
-      
      ```` 
    
    **10. Find customers who have ordered the product with the highest price.**
       
       
       ````sql
-      
       Select c.first_name as first_name,
       c.last_name as last_name,
       p.price 
@@ -138,6 +135,5 @@ order by orders desc;
       join order_items oi on oi.order_id = o.order_id
       join products p on p.product_id = oi.product_id
       where p.price in (Select max(price) from products);
-      
       ````
 
