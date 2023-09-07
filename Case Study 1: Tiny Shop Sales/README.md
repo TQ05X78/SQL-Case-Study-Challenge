@@ -10,6 +10,12 @@
      from products
      where price = (Select max(price)from products);
    ````
+#### Answer:
+| product_id | product_name | price |
+| ----------- | ---------- |------------  |
+| 13           | Product M        |  70.0   |
+
+
 ***
 **2. Which customer has made the most orders?**
 
