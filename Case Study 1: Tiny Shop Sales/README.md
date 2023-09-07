@@ -67,18 +67,18 @@ order by orders desc;
 
  **6. Find the top 3 customers who have ordered the most distinct products.**
 
-        ````sql
-	Select c.first_name as first_name,
-	c.last_name as last_name,
-	count(distinct oi.product_id) most_distinct_products 
-	from orders o 
-	join order_items oi on oi.order_id = o.order_id
-	join customers c on c.customer_id = o.customer_id
-	join products p on p.product_id = oi.product_id
-	group by first_name, last_name
-	order by most_distinct_products desc
-	limit 3;
-        ````
+  ````sql
+  Select c.first_name as first_name,
+  c.last_name as last_name,
+  count(distinct oi.product_id) most_distinct_products 
+  from orders o 
+  join order_items oi on oi.order_id = o.order_id
+  join customers c on c.customer_id = o.customer_id
+  join products p on p.product_id = oi.product_id
+  group by first_name, last_name
+  order by most_distinct_products desc
+  limit 3;
+  ````
 	
 	
  **7. Which product has been bought the least in terms of quantity?**
