@@ -81,7 +81,6 @@ order by orders desc;
    ````
    
    **7. Which product has been bought the least in terms of quantity?**
-
     ````sql
     Select p.product_name as products, sum(oi.quantity) as quantity
     from order_items oi 
@@ -91,7 +90,6 @@ order by orders desc;
     ````
    
    **8. What is the median order total?**
-
     ````sql
     with cte as (
     Select oi.order_id, sum(oi.quantity*p.price) as revenue,
@@ -100,7 +98,6 @@ order by orders desc;
     from order_items oi
     join products p on p.product_id = oi.product_id
     group by oi.order_id)
-    
     Select percentile_disc(0.5) within group (order by revenue) as median_order from cte;
     ````
     
