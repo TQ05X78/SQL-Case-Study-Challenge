@@ -80,10 +80,8 @@ order by orders desc;
    limit 3;
    ````
    
-   
    **7. Which product has been bought the least in terms of quantity?**
 
-   
     ````sql
     Select p.product_name as products, sum(oi.quantity) as quantity
     from order_items oi 
@@ -92,10 +90,8 @@ order by orders desc;
     order by quantity;
     ````
    
-   
    **8. What is the median order total?**
 
-    
     ````sql
     with cte as (
     Select oi.order_id, sum(oi.quantity*p.price) as revenue,
@@ -108,7 +104,6 @@ order by orders desc;
     Select percentile_disc(0.5) within group (order by revenue) as median_order from cte;
     ````
     
-   
    **9. For each order, determine if it was ‘Expensive’ (total over 300), ‘Affordable’ (total over 100), or ‘Cheap’.**
       
       ````sql
@@ -127,7 +122,6 @@ order by orders desc;
       else 'Cheap' end as Affordability
       from cte;	 
       ```` 
-   
    
    **10. Find customers who have ordered the product with the highest price.**
       
