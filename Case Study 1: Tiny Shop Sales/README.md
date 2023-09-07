@@ -111,7 +111,6 @@ order by orders desc;
    
    **9. For each order, determine if it was ‘Expensive’ (total over 300), ‘Affordable’ (total over 100), or ‘Cheap’.**
       
-    
       ````sql
       with cte as (
       Select o.order_id order_id, sum(oi.quantity * p.price) as revenue  
@@ -131,7 +130,6 @@ order by orders desc;
    
    
    **10. Find customers who have ordered the product with the highest price.**
-      
       
       ````sql
       Select c.first_name as first_name,
