@@ -89,7 +89,8 @@ order by orders desc;
     from order_items oi 
     join products p on p.product_id = oi.product_id
     group by product_name
-    order by quantity;````
+    order by quantity;
+    ````
     
    ***
    **8. What is the median order total?**
