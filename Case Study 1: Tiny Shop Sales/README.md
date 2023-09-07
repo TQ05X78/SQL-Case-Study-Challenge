@@ -29,6 +29,22 @@ join orders o on o.customer_id = c.customer_id
 group by c.first_name, c.last_name
 order by orders desc;
 ````
+#### Answer:
+| first_name | last_name | orders | 
+| ----------- | ---------- | -------------| 
+| Jane           | Smith | 2    | 
+| John           | Doe | 2     | 
+| Bob           | Johnson |2    | 
+| Quinn           | Roberts |1   | 
+| Oliver           | Patterson |1 | 
+| Eva           | Fisher | ramen |1 | 
+| Charlie           | Davis | curry | 1 | 
+| Sophia           | Thomas | curry | 1 | 
+| George           | Harris | sushi |1  | 
+| Lily           | Nelson | sushi | 1   | 
+| Ivy           | Jones | ramen | 1  | 
+| Kevin           | Miller | ramen | 1 | 
+| Alice           | Brown | ramen | 1  | 
 *** 
 **3. What’s the total revenue per product?**
 
