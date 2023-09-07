@@ -65,47 +65,47 @@ order by orders desc;
   order by c.customer_id;
   ````
 
- **6. Find the top 3 customers who have ordered the most distinct products.**
+  **6. Find the top 3 customers who have ordered the most distinct products.**
 
-  ````sql
-  Select c.first_name as first_name,
-  c.last_name as last_name,
-  count(distinct oi.product_id) most_distinct_products 
-  from orders o 
-  join order_items oi on oi.order_id = o.order_id
-  join customers c on c.customer_id = o.customer_id
-  join products p on p.product_id = oi.product_id
-  group by first_name, last_name
-  order by most_distinct_products desc
-  limit 3;
-  ````
+   ````sql
+   Select c.first_name as first_name,
+   c.last_name as last_name,
+   count(distinct oi.product_id) most_distinct_products 
+   from orders o 
+   join order_items oi on oi.order_id = o.order_id
+   join customers c on c.customer_id = o.customer_id
+   join products p on p.product_id = oi.product_id
+   group by first_name, last_name
+   order by most_distinct_products desc
+   limit 3;
+   ````
 	
 	
- **7. Which product has been bought the least in terms of quantity?**
+   **7. Which product has been bought the least in terms of quantity?**
 
-       ````sql
-       Select p.product_name as products, sum(oi.quantity) as quantity
-       from order_items oi 
-       join products p on p.product_id = oi.product_id
-       group by product_name
-       order by quantity;
-       ````
+    ````sql
+    Select p.product_name as products, sum(oi.quantity) as quantity
+    from order_items oi 
+    join products p on p.product_id = oi.product_id
+    group by product_name
+    order by quantity;
+    ````
 	
- **8. What is the median order total?**
+   **8. What is the median order total?**
 
-       ````sql
-       with cte as (
-       Select oi.order_id, sum(oi.quantity*p.price) as revenue,
-       row_number() over (order by sum(quantity*price)) as row_number,
-       count(*) over() as total_orders
-       from order_items oi
-       join products p on p.product_id = oi.product_id
-       group by oi.order_id)
+    ````sql
+     with cte as (
+     Select oi.order_id, sum(oi.quantity*p.price) as revenue,
+     row_number() over (order by sum(quantity*price)) as row_number,
+     count(*) over() as total_orders
+     from order_items oi
+     join products p on p.product_id = oi.product_id
+     group by oi.order_id)
  
-       Select percentile_disc(0.5) within group (order by revenue) as median_order from cte;
-       ````
+     Select percentile_disc(0.5) within group (order by revenue) as median_order from cte;
+     ````
 
- **9. For each order, determine if it was ‘Expensive’ (total over 300), ‘Affordable’ (total over 100), or ‘Cheap’.**
+**9. For each order, determine if it was ‘Expensive’ (total over 300), ‘Affordable’ (total over 100), or ‘Cheap’.**
       
       ````sql
       with cte as (
